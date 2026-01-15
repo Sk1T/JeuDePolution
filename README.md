@@ -1,1 +1,3 @@
 # JeuDePolution
+
+Author: Denys Skobalo
