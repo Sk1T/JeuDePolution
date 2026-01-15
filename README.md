@@ -1,3 +1,3 @@
 # JeuDePolution
 
-Author: Denys Skobalo
+Author: Denys Skobalo, Artem Karelin
