@@ -25,6 +25,6 @@ func check_win_condition(): # Vérifie si le score atteint l'objectif
 func win_game():
 	print("VICTOIRE ! La planète est propre !")
 	# Ici, vous pouvez changer de scène :
-	# get_tree().change_scene_to_file("res://WinScreen.tscn")
+	get_tree().change_scene_to_file( "res://scene/WinScreen/win_screen.tscn")
 	# Ou mettez simplement le jeu en pause :
 	# get_tree().paused = true

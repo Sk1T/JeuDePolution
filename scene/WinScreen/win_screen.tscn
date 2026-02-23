@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://b4wkkp3tfk5td"]
+
+[ext_resource type="Script" path="res://scene/WinScreen/win_screen.gd" id="1_rw885"]
+[ext_resource type="PackedScene" uid="uid://0y6imfkbh0wp" path="res://scene/WinScreen/bg_win_screen.tscn" id="2_6g2vx"]
+[ext_resource type="Texture2D" uid="uid://ceoryeyn4jfyt" path="res://Assets/png/Button/Rect/Fill/Hover.png" id="3_xb5pi"]
+[ext_resource type="Texture2D" uid="uid://cw56r0jywlewy" path="res://Assets/png/Button/Rect/Fill/Default.png" id="4_gv7cs"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x4n1e"]
+content_margin_right = 1.0
+content_margin_bottom = 12.0
+texture = ExtResource("3_xb5pi")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mb8re"]
+content_margin_bottom = 12.0
+texture = ExtResource("4_gv7cs")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_824d6"]
+content_margin_bottom = 15.0
+texture = ExtResource("3_xb5pi")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gugwr"]
+content_margin_bottom = 15.0
+texture = ExtResource("4_gv7cs")
+
+[node name="WinScreen" type="Node2D"]
+script = ExtResource("1_rw885")
+
+[node name="AcceptDialog" type="AcceptDialog" parent="."]
+process_mode = 3
+title = "Félicitations"
+size = Vector2i(492, 200)
+dialog_text = "Vous avez nettoyé la planète et vous nous avez sauvés, merci."
+
+[node name="main menu" type="Button" parent="."]
+offset_left = 214.0
+offset_top = 63.0
+offset_right = 470.0
+offset_bottom = 154.0
+theme_override_colors/font_hover_color = Color(0.356953, 0.193518, 0.162169, 1)
+theme_override_colors/font_color = Color(0.507609, 0.317059, 0.282788, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/hover = SubResource("StyleBoxTexture_x4n1e")
+theme_override_styles/normal = SubResource("StyleBoxTexture_mb8re")
+text = "Return to menu
+"
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 214.0
+offset_top = 197.0
+offset_right = 477.0
+offset_bottom = 297.0
+theme_override_colors/font_hover_pressed_color = Color(0.537255, 0.443137, 0.415686, 1)
+theme_override_colors/font_color = Color(0.505882, 0.317647, 0.282353, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxTexture_824d6")
+theme_override_styles/normal = SubResource("StyleBoxTexture_gugwr")
+text = "Quit"
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_6g2vx")]
+
+[connection signal="confirmed" from="AcceptDialog" to="." method="_on_accept_dialog_confirmed"]
+[connection signal="pressed" from="main menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
