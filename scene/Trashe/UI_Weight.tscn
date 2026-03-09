@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cotd1teuak74e"]
+
+[ext_resource type="Script" path="res://scene/Trashe/ui_weight.gd" id="1_8r6js"]
+[ext_resource type="Script" path="res://weight_label.gd" id="1_kdbfx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqdhn"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="WeightUI" type="CanvasLayer"]
+script = ExtResource("1_8r6js")
+
+[node name="WeightBar" type="ProgressBar" parent="."]
+offset_right = 206.0
+offset_bottom = 27.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_vqdhn")
+max_value = 10.0
+step = 0.1
+show_percentage = false
+
+[node name="WeightLabel" type="Label" parent="."]
+offset_left = 61.0
+offset_top = 1.0
+offset_right = 146.0
+offset_bottom = 24.0
+text = "Poids: 0/10"
+script = ExtResource("1_kdbfx")

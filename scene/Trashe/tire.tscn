@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://buu4j7u1oc1t8"]
+
+[ext_resource type="Script" path="res://scene/Trashe/tire.gd" id="1_agqvd"]
+[ext_resource type="Texture2D" uid="uid://drk7wqe2nd13u" path="res://scene/Trashe/Zombie-Tileset---_0192_Capa-193.png" id="2_h60fu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gervb"]
+
+[node name="Tire" type="Node2D"]
+script = ExtResource("1_agqvd")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_gervb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.98023e-08, -8.9407e-08)
+scale = Vector2(2.71429, 2.375)
+texture = ExtResource("2_h60fu")

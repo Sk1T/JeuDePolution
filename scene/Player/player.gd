@@ -1,19 +1,27 @@
 extends CharacterBody2D
 @onready var interaction_area: Area2D = $InteractionArea # Zone pour détecter les objets proches
-var max_speed = 200 # Vitesse maximale de déplacement
+@export var base_speed: float = 150.0
+var current_speed: float = 150.0 # Vitesse maximale de déplacement
 @onready var anim = $AnimatedSprite2D # Référence au nœud d'animation
 var inventory = [] # Liste des objets collectés
+var current_weight: float = 0.0
+@export var max_weight: float = 10.0
 var is_picking_up = false # État : vrai si le joueur est en train de ramasser un objet
+
+@export var ui_node: CanvasLayer
 
 var last_direction = Vector2.DOWN  # Stocke la dernière direction pour l'animation Idle
 
+func update_speed():
+	var load_factor = current_weight/ max_weight
+	current_speed = base_speed * (1.0 -(load_factor*0.4))
 func _process(_delta):
 	if is_picking_up:# Si on ramasse un objet, on arrête le mouvement
 		velocity =Vector2.ZERO
 		move_and_slide()
 		return
 	var direction = movement_vector().normalized() # Récupération du vecteur de mouvement normalisé
-	velocity = direction * max_speed
+	velocity = direction * current_speed
 	# Gestion des animations de mouvement
 	if direction != Vector2.ZERO:
 		last_direction = direction
@@ -55,6 +63,11 @@ func check_interactions():
 		var target = area.get_parent()
 			
 		if target.has_method("collect"): # Vérifie si l'objet peut être collecté
+			if current_weight + target.weight > max_weight:
+				print("Trop Lourd!!! Tout d'abord recycler les déchetes actuels")
+				return
+			   
+			 
 			if anim.sprite_frames.has_animation("Pick_up"):
 				is_picking_up = true
 				anim.play("Pick_up")
@@ -62,10 +75,15 @@ func check_interactions():
 				await anim.animation_finished # Attend la fin de l'animation
 				is_picking_up = false
 			# Ajoute l'objet à l'inventaire
-			var data = {"name": target.item_name,"price": target.price}
+			current_weight+= target.weight
+			update_speed()
+			if ui_node:
+				ui_node.update_weight(current_weight, max_weight)
+			var data = {"name": target.item_name,"price": target.price, "weight": target.weight }
 			inventory.append(data)
 			target.collect() # Détruit l'objet dans le monde
-			print("Collectez: ", data.name, " Prix: ", data.price)
+			print("Collectez: ", data.name, " Prix: ", data.price,"  Weight: ",current_weight, "/", max_weight)
 			break # On ne ramasse qu'un objet à la fois
 		elif target.has_method("process_all_garbage"): # Vérifie si c'est la station de recyclage
 				target.process_all_garbage(self)
+				update_speed()

@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://5p4v47oal6ha"]
+
+[ext_resource type="Script" path="res://glass_bottle.gd" id="1_lvfeu"]
+[ext_resource type="Texture2D" uid="uid://m4pou7pnwpuc" path="res://scene/Trashe/recycle_items.png" id="2_mtmop"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ume6g"]
+radius = 7.07107
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnjtl"]
+atlas = ExtResource("2_mtmop")
+region = Rect2(241.356, 10.8883, 20.4904, 50.2946)
+
+[node name="Glass_bottle" type="Node2D"]
+script = ExtResource("1_lvfeu")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ume6g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.276596, 0.26)
+texture = SubResource("AtlasTexture_tnjtl")
