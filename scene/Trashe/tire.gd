@@ -1,7 +1,8 @@
 extends Node2D
 
-@export var item_name: String = "iron_can" # Nom de l'objet
-@export var price: int = 10 #valeur conditionnelle des déshetes
+@export var item_name: String = "tire" # Nom de l'objet
+@export var price: int = 40 #valeur conditionnelle des déshetes
+@export var weight: float = 5.5
 func collect():# Désactive les collisions pour éviter de collecter l'objet deux fois
 	$Area2D.set_deferred("monitoring", false)
 	$Area2D.set_deferred("monitorable", false)

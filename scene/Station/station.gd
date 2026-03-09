@@ -13,7 +13,10 @@ func process_all_garbage(player):
 		current_total += item["price"]
 	
 	player.inventory.clear() # Vider l'inventaire du joueur
-	
+	player.current_weight = 0.0
+	player.update_speed()
+	if player.ui_node:
+		player.ui_node.update_weight(0.0, player.max_weight)
 	print("Progrès global : ", current_total, " / ", goal_price)
 	
 	check_win_condition()
