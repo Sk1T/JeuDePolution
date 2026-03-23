@@ -1,5 +1,6 @@
-[gd_scene load_steps=16 format=4 uid="uid://fmimkhvbh67n"]
+[gd_scene load_steps=17 format=4 uid="uid://fmimkhvbh67n"]
 
+[ext_resource type="Script" path="res://scene/Level/level.gd" id="1_grpty"]
 [ext_resource type="TileSet" uid="uid://ckmmkhdtmq04i" path="res://Ressourses/world.tres" id="1_hkugq"]
 [ext_resource type="PackedScene" uid="uid://cotd1teuak74e" path="res://scene/Trashe/UI_Weight.tscn" id="1_wibw6"]
 [ext_resource type="PackedScene" uid="uid://drwegsntcu5en" path="res://scene/Player/player.tscn" id="2_7yr01"]
@@ -1464,6 +1465,7 @@ sources/0 = SubResource("TileSetAtlasSource_ecsux")
 
 [node name="Level" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_grpty")
 
 [node name="WeightUI" parent="." instance=ExtResource("1_wibw6")]
 
