@@ -6,8 +6,5 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 func update_weight(current: float, max_w: float):
 	text = "Вес инвентаря: " + str(current) + " / " + str(max_w)

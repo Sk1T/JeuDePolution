@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://fmimkhvbh67n"]
+[gd_scene load_steps=18 format=4 uid="uid://fmimkhvbh67n"]
 
 [ext_resource type="Script" path="res://scene/Level/level.gd" id="1_grpty"]
 [ext_resource type="TileSet" uid="uid://ckmmkhdtmq04i" path="res://Ressourses/world.tres" id="1_hkugq"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dp7efwmrntp53" path="res://Assets/PALands_DEMO/DEMO.png" id="2_bfyji"]
 [ext_resource type="PackedScene" uid="uid://b01y2nmcqb0oy" path="res://scene/Station/station.tscn" id="3_1kjik"]
 [ext_resource type="PackedScene" uid="uid://chn0nuk1gvpra" path="res://scene/Trashe/Iron_can.tscn" id="4_jq2h6"]
+[ext_resource type="PackedScene" uid="uid://5d280g3skyf3" path="res://scene/PolArea/polution_area.tscn" id="6_8ihkr"]
 [ext_resource type="PackedScene" uid="uid://buu4j7u1oc1t8" path="res://scene/Trashe/tire.tscn" id="6_rqlok"]
 [ext_resource type="PackedScene" uid="uid://cvijpbjbk7180" path="res://scene/Trashe/newspapers.tscn" id="7_wfrxm"]
 [ext_resource type="PackedScene" uid="uid://58ajl6dsbnl3" path="res://scene/Trashe/box_of_pizza.tscn" id="8_x1t36"]
@@ -1520,3 +1521,7 @@ position = Vector2(500, 375)
 position = Vector2(582, 407)
 
 [node name="PauseMenu" parent="." instance=ExtResource("11_8556h")]
+
+[node name="PolutionArea" parent="." instance=ExtResource("6_8ihkr")]
+z_index = 1
+position = Vector2(-37, 7)

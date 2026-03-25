@@ -336,7 +336,7 @@ sprite_frames = SubResource("SpriteFrames_5vnyg")
 animation = &"Pick_up"
 autoplay = "Idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -13)
 shape = SubResource("CapsuleShape2D_k232c")
 

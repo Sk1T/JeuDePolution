@@ -10,9 +10,6 @@ func _input(event):
 		toggle_pause()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
-func _process(delta):
-	pass
-
 func toggle_pause():
 	var is_paused = !get_tree().paused
 	get_tree().paused = is_paused 

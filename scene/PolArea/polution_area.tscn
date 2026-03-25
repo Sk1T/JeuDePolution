@@ -1,0 +1,79 @@
+[gd_scene load_steps=13 format=3 uid="uid://5d280g3skyf3"]
+
+[ext_resource type="Script" path="res://polution_area.gd" id="1_ejbcv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cmrts"]
+size = Vector2(1174.88, 626.375)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fr3ih"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_cr5ap"]
+max_value = 0.3
+_data = [Vector2(0, 0.00659341), 0.0, 1.90738, 0, 0, Vector2(0.5, 0.3), 0.0, 0.0, 0, 0, Vector2(0.993333, 0.201099), -1.02433, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_mtqe2"]
+curve = SubResource("Curve_cr5ap")
+
+[sub_resource type="Gradient" id="Gradient_41it6"]
+colors = PackedColorArray(1, 1, 1, 0.0784314, 0.2, 1, 0.219608, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4p4on"]
+gradient = SubResource("Gradient_41it6")
+
+[sub_resource type="Curve" id="Curve_qbh0e"]
+max_value = 3.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_df2f0"]
+max_value = 30.0
+_data = [Vector2(0, 15.1648), 0.0, 197.802, 0, 0, Vector2(0.253333, 30), 0.0, 0.0, 0, 0, Vector2(1, 29.6703), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_7ysvq"]
+max_value = 3.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_cslen"]
+curve_x = SubResource("Curve_qbh0e")
+curve_y = SubResource("Curve_df2f0")
+curve_z = SubResource("Curve_7ysvq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ivksa"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(500, -100, 0)
+emission_shape_scale = Vector3(1.7, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(350, 1, 1)
+gravity = Vector3(0, 1200, 0)
+scale_min = 0.2
+scale_over_velocity_curve = SubResource("CurveXYZTexture_cslen")
+color_initial_ramp = SubResource("GradientTexture1D_4p4on")
+alpha_curve = SubResource("CurveTexture_mtqe2")
+
+[node name="PolutionArea" type="Node2D"]
+script = ExtResource("1_ejbcv")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="polutionHitbox" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(588, 315)
+shape = SubResource("RectangleShape2D_cmrts")
+
+[node name="HitTimer" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="AcidRain" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_fr3ih")
+position = Vector2(96, 104)
+amount = 1000
+process_material = SubResource("ParticleProcessMaterial_ivksa")
+preprocess = 1.0
+visibility_rect = Rect2(-100, -100, 1150, 623)
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]

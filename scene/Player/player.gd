@@ -8,6 +8,9 @@ var current_weight: float = 0.0
 @export var max_weight: float = 10.0
 var is_picking_up = false # État : vrai si le joueur est en train de ramasser un objet
 
+var max_health: int = 100 #max player health
+var health: int = 100 #current player health
+
 @export var ui_node: CanvasLayer
 
 var last_direction = Vector2.DOWN  # Stocke la dernière direction pour l'animation Idle
@@ -87,3 +90,7 @@ func check_interactions():
 		elif target.has_method("process_all_garbage"): # Vérifie si c'est la station de recyclage
 				target.process_all_garbage(self)
 				update_speed()
+
+func take_damage(amount: int) -> void:
+	health -= amount
+	print(health)
