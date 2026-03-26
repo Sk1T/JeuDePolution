@@ -1,4 +1,7 @@
 extends CharacterBody2D
+
+signal died
+
 #exports
 @export var base_speed: float = 150.0
 @export var max_weight: float = 10.0
@@ -19,6 +22,7 @@ var health: int #current player health
 
 
 func _ready() -> void:
+	PlayerStats.reset()
 	health = PlayerStats.health
 	max_health = PlayerStats.max_health #loading health
 
@@ -115,5 +119,6 @@ func die() -> void:
 	alive = false
 	velocity = Vector2.ZERO
 	anim.play("Death") #adding death animation
-	
+	await anim.animation_finished
+	died.emit()
 	
