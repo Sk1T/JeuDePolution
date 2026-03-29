@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://bu3vd4561lmna"]
+
+[ext_resource type="PackedScene" uid="uid://cotd1teuak74e" path="res://scene/Trashe/UI_Weight.tscn" id="1_qc50u"]
+[ext_resource type="Script" path="res://hud.gd" id="1_ubfc5"]
+[ext_resource type="Texture2D" uid="uid://c7t5eb2ka4w53" path="res://Assets/UI/heart 100.png" id="2_xixfi"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_ubfc5")
+
+[node name="WeightUI" parent="." instance=ExtResource("1_qc50u")]
+
+[node name="Hearts" type="HBoxContainer" parent="."]
+offset_left = 475.0
+offset_top = 10.0
+offset_right = 641.0
+offset_bottom = 23.0
+scale = Vector2(2, 2)
+
+[node name="Heart1" type="TextureRect" parent="Hearts"]
+layout_mode = 2
+texture = ExtResource("2_xixfi")
+stretch_mode = 2
+
+[node name="Heart2" type="TextureRect" parent="Hearts"]
+layout_mode = 2
+texture = ExtResource("2_xixfi")
+stretch_mode = 2
+
+[node name="Heart3" type="TextureRect" parent="Hearts"]
+layout_mode = 2
+texture = ExtResource("2_xixfi")
+stretch_mode = 2
+
+[node name="Heart4" type="TextureRect" parent="Hearts"]
+layout_mode = 2
+texture = ExtResource("2_xixfi")
+stretch_mode = 2
+
+[node name="Heart5" type="TextureRect" parent="Hearts"]
+layout_mode = 2
+texture = ExtResource("2_xixfi")
+stretch_mode = 2

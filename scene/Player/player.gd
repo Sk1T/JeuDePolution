@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+signal health_changed(new_health: int)
 signal died
 
 #exports
@@ -111,7 +112,7 @@ func take_damage(amount: int) -> void:
 	if alive:
 		health -= amount
 		PlayerStats.health = health
-		print(health)
+		emit_signal("health_changed", health)
 		if health <= 0:
 			die()
 
@@ -121,4 +122,3 @@ func die() -> void:
 	anim.play("Death") #adding death animation
 	await anim.animation_finished
 	died.emit()
-	
