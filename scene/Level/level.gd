@@ -7,7 +7,11 @@ func _ready() -> void:
 	_setup_level(self)
 
 func _setup_level(level_root: Node) -> void:
+	var player = level_root.get_node_or_null("Player")
 	var exit = level_root.get_node_or_null("Exit")
+	if player:
+		$HUD.set_player(player)
+		player.ui_node = $HUD
 	if exit:
 		exit.body_entered.connect(_on_exit_body_entered)
 
