@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://biv5b2puwwr6n"]
+
+[ext_resource type="PackedScene" uid="uid://fmimkhvbh67n" path="res://scene/Level/level_1.tscn" id="1_fdn0i"]
+
+[node name="Level" instance=ExtResource("1_fdn0i")]
+
+[node name="Tire" parent="." index="11"]
+position = Vector2(486, 417)
+
+[node name="Box of pizza" parent="." index="13"]
+position = Vector2(570, 517)
+
+[node name="Glass_bottle2" parent="." index="15"]
+position = Vector2(631, 457)
+
+[node name="Exit" parent="." index="18"]
+position = Vector2(577, 639)

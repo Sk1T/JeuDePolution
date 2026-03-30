@@ -8,8 +8,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+
 func update_weight(current: float, max_w: float):
 	var ratio = current/ max_w
 	

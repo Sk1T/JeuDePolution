@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbungsqu3kg63"
-path="res://.godot/imported/Zombie Apocalypse Tileset Reference.png-4f7adc4e3a9c77a8921879921d141b28.ctex"
+uid="uid://c0nqmgg671i8r"
+path="res://.godot/imported/heart 25.png-dbe36887c69795a7eda9fd3520971cd1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Zombie Apocalypse Tileset Reference.png"
-dest_files=["res://.godot/imported/Zombie Apocalypse Tileset Reference.png-4f7adc4e3a9c77a8921879921d141b28.ctex"]
+source_file="res://Assets/UI/heart 25.png"
+dest_files=["res://.godot/imported/heart 25.png-dbe36887c69795a7eda9fd3520971cd1.ctex"]
 
 [params]
 

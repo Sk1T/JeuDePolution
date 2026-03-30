@@ -5,13 +5,6 @@ extends Control
 func _ready():
 	get_tree().paused = true
 	
-	
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 
 func _on_button_pressed():
 	get_tree().paused = false
