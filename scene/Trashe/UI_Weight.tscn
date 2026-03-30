@@ -1,26 +1,45 @@
-[gd_scene load_steps=4 format=3 uid="uid://cotd1teuak74e"]
+[gd_scene load_steps=7 format=3 uid="uid://cotd1teuak74e"]
 
 [ext_resource type="Script" path="res://scene/Trashe/ui_weight.gd" id="1_8r6js"]
 [ext_resource type="Script" path="res://weight_label.gd" id="1_kdbfx"]
+[ext_resource type="Texture2D" uid="uid://bci8u4h6syfgx" path="res://Assets/04.png" id="2_e8xet"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqdhn"]
-bg_color = Color(1, 1, 1, 1)
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmbrg"]
+atlas = ExtResource("2_e8xet")
+region = Rect2(296.647, 132.965, 32.7928, 5.38084)
+margin = Rect2(3.885, 2.37, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_of3bw"]
+atlas = ExtResource("2_e8xet")
+region = Rect2(5.70649, 130.676, 38.3767, 11.777)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w16ib"]
+atlas = ExtResource("2_e8xet")
+region = Rect2(57.0145, 164.643, 31.8841, 5.72279)
+margin = Rect2(3.55, -0.56, 0, 0)
 
 [node name="WeightUI" type="CanvasLayer"]
 script = ExtResource("1_8r6js")
 
-[node name="WeightBar" type="ProgressBar" parent="."]
-offset_right = 206.0
-offset_bottom = 27.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_vqdhn")
+[node name="WeightBar" type="TextureProgressBar" parent="."]
+offset_left = 1.0
+offset_right = 357.0
+offset_bottom = 240.0
+scale = Vector2(5, 4)
 max_value = 10.0
 step = 0.1
-show_percentage = false
+texture_under = SubResource("AtlasTexture_jmbrg")
+texture_over = SubResource("AtlasTexture_of3bw")
+texture_progress = SubResource("AtlasTexture_w16ib")
+texture_progress_offset = Vector2(0, 2.585)
 
 [node name="WeightLabel" type="Label" parent="."]
-offset_left = 61.0
-offset_top = 1.0
-offset_right = 146.0
-offset_bottom = 24.0
-text = "Poids: 0/10"
+offset_left = 27.0
+offset_top = 8.0
+offset_right = 162.0
+offset_bottom = 32.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 23
+text = "Weight: 0/10"
 script = ExtResource("1_kdbfx")
