@@ -1,13 +1,20 @@
 extends Node2D
+var popup_scene = preload("res://scene/pop_up_window.tscn")
 
 func _ready():
 	get_tree().paused = true  
-	$AcceptDialog.popup_centered()
+	show_my_dialog()
 	
 
 func show_my_dialog():
-	get_tree().paused = true  
-	$AcceptDialog.popup_centered()
+	var popup = popup_scene.instantiate()
+	var canvas = CanvasLayer.new()
+	add_child(canvas)
+	canvas.add_child(popup)
+	popup.setup(
+		"Victory! \n You have cleaned the planet and saved the environment!", 
+		"Ok"
+	)
 
 func _on_main_menu_pressed():
 	get_tree().change_scene_to_file("res://scene/menu.tscn")

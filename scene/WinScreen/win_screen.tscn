@@ -6,12 +6,6 @@
 [node name="WinScreen" type="Node2D"]
 script = ExtResource("1_rw885")
 
-[node name="AcceptDialog" type="AcceptDialog" parent="."]
-process_mode = 3
-title = "Félicitations"
-size = Vector2i(492, 200)
-dialog_text = "Vous avez nettoyé la planète et vous nous avez sauvés, merci."
-
 [node name="main menu" type="Button" parent="."]
 offset_left = 214.0
 offset_top = 61.0
@@ -31,6 +25,5 @@ text = "Quit"
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("2_6g2vx")]
 
-[connection signal="confirmed" from="AcceptDialog" to="." method="_on_accept_dialog_confirmed"]
 [connection signal="pressed" from="main menu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
