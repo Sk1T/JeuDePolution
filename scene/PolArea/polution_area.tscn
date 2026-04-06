@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://5d280g3skyf3"]
+[gd_scene load_steps=14 format=3 uid="uid://5d280g3skyf3"]
 
 [ext_resource type="Script" path="res://polution_area.gd" id="1_ejbcv"]
+[ext_resource type="AudioStream" uid="uid://dpiig803a6xe4" path="res://Sounds/Rain.wav" id="2_lif8e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cmrts"]
 size = Vector2(1174.88, 626.375)
@@ -73,6 +74,10 @@ amount = 1000
 process_material = SubResource("ParticleProcessMaterial_ivksa")
 preprocess = 1.0
 visibility_rect = Rect2(-100, -100, 1150, 623)
+
+[node name="RainSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_lif8e")
+volume_db = -23.771
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
