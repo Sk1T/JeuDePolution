@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" load_steps=5 format=3 uid="uid://ckmmkhdtmq04i"]
 
-[ext_resource type="Texture2D" uid="uid://bbungsqu3kg63" path="res://Assets/Zombie Apocalypse Tileset Reference.png" id="1_ji5ne"]
-[ext_resource type="Texture2D" uid="uid://dp7efwmrntp53" path="res://Assets/PALands_DEMO/DEMO.png" id="2_n7iai"]
+[ext_resource type="Texture2D" uid="uid://bbungsqu3kg63" path="res://Assets/Decorations/Zombie Apocalypse Tileset Reference.png" id="1_ji5ne"]
+[ext_resource type="Texture2D" uid="uid://dp7efwmrntp53" path="res://Assets/Decorations/DEMO.png" id="2_n7iai"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s42jj"]
 texture = ExtResource("1_ji5ne")
