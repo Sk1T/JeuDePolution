@@ -10,6 +10,7 @@ signal died
 #onready
 @onready var interaction_area: Area2D = $InteractionArea # Zone pour détecter les objets proches
 @onready var anim = $AnimatedSprite2D # Référence au nœud d'animation
+@onready var interact_prompt = $InteractPrompt
 #variablies
 var current_speed: float = 150.0 # Vitesse maximale de déplacement
 var last_direction = Vector2.DOWN  # Stocke la dernière direction pour l'animation Idle
@@ -26,7 +27,9 @@ func _ready() -> void:
 	PlayerStats.reset()
 	health = PlayerStats.health
 	max_health = PlayerStats.max_health #loading health
-
+	
+	if interact_prompt:
+		interact_prompt.hide()
 
 
 func update_speed():
@@ -34,6 +37,7 @@ func update_speed():
 	current_speed = base_speed * (1.0 -(load_factor*0.4))
 func _process(_delta):
 	if not alive: return #stops processes after death
+	update_interact_visuals()
 	if is_picking_up:# Si on ramasse un objet, on arrête le mouvement
 		velocity =Vector2.ZERO
 		move_and_slide()
@@ -66,6 +70,23 @@ func _process(_delta):
 			
 	move_and_slide() # Applique le mouvement
 
+func update_interact_visuals():
+	if not alive or is_picking_up:
+		interact_prompt.hide()
+		return
+	var areas = interaction_area.get_overlapping_areas()
+	var can_interact = false
+	
+	for area in areas:
+		var target = area.get_parent()
+		if target.has_method("collect") or target.has_method("process_all_garbage"):
+			can_interact = true
+			break
+	if can_interact:
+		interact_prompt.show()
+	else:
+		interact_prompt.hide()
+
 func movement_vector(): # Calcule la direction en fonction des touches pressées
 	var x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	var y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
@@ -90,6 +111,7 @@ func check_interactions():
 			 
 			if anim.sprite_frames.has_animation("Pick_Up"):
 				is_picking_up = true
+				interact_prompt.hide()
 				anim.play("Pick_Up")
 				
 				await anim.animation_finished # Attend la fin de l'animation
@@ -119,6 +141,7 @@ func take_damage(amount: int) -> void:
 func die() -> void:
 	alive = false
 	velocity = Vector2.ZERO
+	interact_prompt.hide()
 	anim.play("Death") #adding death animation
 	await anim.animation_finished
 	died.emit()
