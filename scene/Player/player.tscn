@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://drwegsntcu5en"]
+[gd_scene load_steps=59 format=3 uid="uid://drwegsntcu5en"]
 
 [ext_resource type="Script" path="res://scene/Player/player.gd" id="1_goyei"]
 [ext_resource type="Texture2D" uid="uid://dscc22jae4ebl" path="res://scene/Player/_side idle.png" id="1_h8sp4"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://od6b7losl3uv" path="res://scene/Player/_down walk.png" id="5_gkiq3"]
 [ext_resource type="Texture2D" uid="uid://bjykceve8i81k" path="res://scene/Player/_up idle.png" id="5_ssy3o"]
 [ext_resource type="Texture2D" uid="uid://prfm1i371vbn" path="res://scene/Player/death.png" id="9_gi6fv"]
+[ext_resource type="PackedScene" uid="uid://bbot6dssxl78j" path="res://scene/interact_prompt.tscn" id="10_2wnjv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uiibm"]
 
@@ -390,8 +391,6 @@ position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_5vnyg")
 animation = &"Death"
 autoplay = "Idle"
-frame = 6
-frame_progress = 1.0
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -13)
@@ -402,3 +401,6 @@ limit_left = 0
 limit_top = 0
 limit_right = 1120
 limit_bottom = 640
+
+[node name="InteractPrompt" parent="." instance=ExtResource("10_2wnjv")]
+position = Vector2(-4, -35)

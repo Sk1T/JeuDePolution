@@ -1481,8 +1481,6 @@ tile_set = SubResource("TileSet_qv0cj")
 
 [node name="Player" parent="." node_paths=PackedStringArray("ui_node") instance=ExtResource("2_7yr01")]
 position = Vector2(572, 372)
-base_speed = null
-max_weight = null
 ui_node = NodePath("../WeightUI")
 
 [node name="Station" parent="." instance=ExtResource("3_1kjik")]
