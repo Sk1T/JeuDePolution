@@ -31,6 +31,10 @@ window/stretch/mode="viewport"
 
 project/assembly_name="2DTopDown_Polution"
 
+[gui]
+
+theme/custom="res://scene/main_theme_buttons.tres"
+
 [input]
 
 move_right={

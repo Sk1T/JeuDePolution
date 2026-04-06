@@ -12,18 +12,18 @@ func _ready():
 func update_weight(current: float, max_w: float):
 	var ratio = current/ max_w
 	
-	label.text = "Poids: " + str(snapped(current, 0.1)) + " / " + str(max_w)
+	label.text = "Weight: " + str(snapped(current, 0.1)) + " / " + str(max_w)
 	bar.max_value = max_w
 	bar.value = current
 	
 	if ratio >= 0.85:
-		bar.modulate = Color(1, 0, 0, 1) 
-		label.add_theme_color_override("font_color", Color(0, 0, 0, 1)) 
+		bar.tint_progress = Color(1.0, 0.0, 0.0, 1.0) 
+		label.add_theme_color_override("font_color",Color.WHITE) 
 		
 	elif ratio >= 0.5:
-		bar.modulate = Color(1, 1, 0, 1) 
-		label.add_theme_color_override("font_color", Color(1, 0.5, 0, 1)) 
+		bar.tint_progress = Color(1.0, 1.0, 0.0, 1.0) 
+		label.add_theme_color_override("font_color", Color.WHITE) 
 		
 	else:
-		bar.modulate = Color(0, 1, 0, 1) 
-		label.add_theme_color_override("font_color", Color(1, 1, 1, 1))
+		bar.tint_progress = Color(0.0, 1.0, 0.0, 1.0)
+		label.add_theme_color_override("font_color", Color.WHITE)

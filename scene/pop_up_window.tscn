@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cdbsvorv2w2ti"]
+[gd_scene load_steps=4 format=3 uid="uid://cdbsvorv2w2ti"]
 
 [ext_resource type="Script" path="res://scene/pop_up_window.gd" id="1_nf25k"]
+[ext_resource type="Texture2D" uid="uid://bb33lo1yarxc8" path="res://Assets/Sprites/UI_Flat_Banner01a.png" id="2_wjtn1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_15uol"]
+texture = ExtResource("2_wjtn1")
 
 [node name="RulesLayer" type="Control"]
 process_mode = 3
@@ -37,16 +41,19 @@ offset_right = 250.0
 offset_bottom = 125.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_15uol")
 
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 15.0
-offset_top = 14.0
-offset_right = 484.0
-offset_bottom = 193.0
-text = "Ce jeu a pour but de nettoyer la nature et de ramasser les déchets !
-Vous devez ramasser et recycler les déchets. 
-Le jeu sera terminé lorsque vous aurez recyclé une quantité suffisante de déchets."
+offset_left = 68.0
+offset_top = 64.0
+offset_right = 442.0
+offset_bottom = 198.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "The goal of this game is to clean up the environment and pick up trash!
+You must pick up and recycle the trash.
+The game will end once you have recycled enough trash."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2

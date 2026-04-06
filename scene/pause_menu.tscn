@@ -1,13 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://djnubjkl0rtex"]
+[gd_scene load_steps=3 format=3 uid="uid://djnubjkl0rtex"]
 
 [ext_resource type="Script" path="res://pause_menu.gd" id="1_mgc70"]
+[ext_resource type="Texture2D" uid="uid://bkdb6w4ulwuhf" path="res://Assets/Sprites/UI_Flat_Banner03a.png" id="2_ahypr"]
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_mgc70")
 
-[node name="Background" type="ColorRect" parent="."]
-modulate = Color(0, 0, 0, 0.376471)
+[node name="Background" type="TextureRect" parent="."]
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
@@ -18,23 +18,18 @@ offset_right = 144.0
 offset_bottom = -36.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_ahypr")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background"]
 top_level = true
 layout_mode = 0
-offset_left = 256.0
-offset_top = 94.0
-offset_right = 405.0
-offset_bottom = 235.0
+offset_left = 268.0
+offset_top = 129.0
+offset_right = 406.0
+offset_bottom = 273.0
 
 [node name="ContinueButton" type="Button" parent="Background/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 text = "Continue"
 
 [node name="Quit" type="Button" parent="Background/VBoxContainer"]
