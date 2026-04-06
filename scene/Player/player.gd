@@ -11,6 +11,8 @@ signal died
 @onready var interaction_area: Area2D = $InteractionArea # Zone pour détecter les objets proches
 @onready var anim = $AnimatedSprite2D # Référence au nœud d'animation
 @onready var interact_prompt = $InteractPrompt
+@onready var step_snd = $StepSound
+@onready var pickup_snd = $PickupSound
 #variablies
 var current_speed: float = 150.0 # Vitesse maximale de déplacement
 var last_direction = Vector2.DOWN  # Stocke la dernière direction pour l'animation Idle
@@ -36,7 +38,9 @@ func update_speed():
 	var load_factor = current_weight/ max_weight
 	current_speed = base_speed * (1.0 -(load_factor*0.4))
 func _process(_delta):
-	if not alive: return #stops processes after death
+	if not alive: 
+		step_snd.stop()
+		return #stops processes after death
 	update_interact_visuals()
 	if is_picking_up:# Si on ramasse un objet, on arrête le mouvement
 		velocity =Vector2.ZERO
@@ -67,7 +71,11 @@ func _process(_delta):
 			anim.play("Down_Idle") 
 		else:
 			anim.play("Idle")
-			
+	if velocity != Vector2.ZERO and not is_picking_up:
+		if not step_snd.playing:
+			step_snd.play()
+	else:
+		step_snd.stop()
 	move_and_slide() # Applique le mouvement
 
 func update_interact_visuals():
@@ -107,6 +115,9 @@ func check_interactions():
 			if current_weight + target.weight > max_weight:
 				print("Trop Lourd!!! Tout d'abord recycler les déchetes actuels")
 				return
+				
+			if pickup_snd:
+				pickup_snd.play()
 			   
 			 
 			if anim.sprite_frames.has_animation("Pick_Up"):
