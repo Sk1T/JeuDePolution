@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://ck215yqus7gpx"]
+
+[ext_resource type="Texture2D" uid="uid://dturt0if58ghs" path="res://Assets/pixel-art-hospital-building-304-png.webp" id="1_43lft"]
+[ext_resource type="Script" path="res://scene/hospital.gd" id="1_mkwmf"]
+[ext_resource type="AudioStream" uid="uid://bs3m8anlla4sj" path="res://Sounds/Heal.wav" id="3_jwb3b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tic4y"]
+size = Vector2(99, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o3rqq"]
+size = Vector2(111, 28)
+
+[node name="Hospital" type="Node2D"]
+script = ExtResource("1_mkwmf")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-13.5, -26)
+shape = SubResource("RectangleShape2D_tic4y")
+
+[node name="HospitalArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HospitalArea"]
+position = Vector2(-16.5, 12)
+shape = SubResource("RectangleShape2D_o3rqq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-15, -45)
+scale = Vector2(0.216607, 0.182857)
+texture = ExtResource("1_43lft")
+
+[node name="HealSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_jwb3b")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -63.0
+offset_top = -97.0
+offset_right = 37.0
+offset_bottom = -84.0
+theme_override_font_sizes/font_size = 16
+text = "YOU CAN HEAL HER"
+autowrap_mode = 3

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://vr1xinukxgfx"]
+[gd_scene load_steps=17 format=4 uid="uid://vr1xinukxgfx"]
 
 [ext_resource type="Script" path="res://scene/Level/level.gd" id="1_grpty"]
 [ext_resource type="TileSet" uid="uid://ckmmkhdtmq04i" path="res://Ressourses/world.tres" id="1_hkugq"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://58ajl6dsbnl3" path="res://scene/Trashe/box_of_pizza.tscn" id="8_x1t36"]
 [ext_resource type="PackedScene" uid="uid://5p4v47oal6ha" path="res://scene/Trashe/glass_bottle.tscn" id="9_dvklh"]
 [ext_resource type="PackedScene" uid="uid://djnubjkl0rtex" path="res://scene/pause_menu.tscn" id="11_8556h"]
+[ext_resource type="PackedScene" uid="uid://ck215yqus7gpx" path="res://scene/hospital.tscn" id="12_vkrr0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d8v34"]
 8:0/0 = 0
@@ -1484,36 +1485,39 @@ position = Vector2(572, 372)
 ui_node = NodePath("../WeightUI")
 
 [node name="Station" parent="." instance=ExtResource("3_1kjik")]
-position = Vector2(570, 290)
+position = Vector2(577, 286)
 
 [node name="Trashe" parent="." instance=ExtResource("4_jq2h6")]
-position = Vector2(399, 408)
+position = Vector2(161, 465)
 
 [node name="Trashe2" parent="." instance=ExtResource("4_jq2h6")]
-position = Vector2(458, 450)
+position = Vector2(229, 385)
 
 [node name="Trashe3" parent="." instance=ExtResource("4_jq2h6")]
-position = Vector2(537, 444)
+position = Vector2(638, 570)
 
 [node name="Trashe4" parent="." instance=ExtResource("4_jq2h6")]
-position = Vector2(626, 421)
+position = Vector2(721, 584)
 
 [node name="Trashe5" parent="." instance=ExtResource("4_jq2h6")]
-position = Vector2(698, 389)
+position = Vector2(906, 271)
 
 [node name="Tire" parent="." instance=ExtResource("6_rqlok")]
-position = Vector2(448, 375)
+position = Vector2(265, 368)
 
 [node name="Newspapers" parent="." instance=ExtResource("7_wfrxm")]
-position = Vector2(392, 366)
+position = Vector2(178, 534)
 
 [node name="Box of pizza" parent="." instance=ExtResource("8_x1t36")]
-position = Vector2(487, 410)
+position = Vector2(293, 501)
 
 [node name="Glass_bottle" parent="." instance=ExtResource("9_dvklh")]
-position = Vector2(500, 375)
+position = Vector2(278, 339)
 
 [node name="Glass_bottle2" parent="." instance=ExtResource("9_dvklh")]
-position = Vector2(582, 407)
+position = Vector2(496, 578)
 
 [node name="PauseMenu" parent="." instance=ExtResource("11_8556h")]
+
+[node name="Hospital" parent="." instance=ExtResource("12_vkrr0")]
+position = Vector2(722, 240)

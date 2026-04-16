@@ -112,6 +112,9 @@ func check_interactions():
 		var target = area.get_parent()
 			
 		if target.has_method("collect"): # Vérifie si l'objet peut être collecté
+			if not "weight" in target:
+				target.collect()
+				return
 			if current_weight + target.weight > max_weight:
 				print("Trop Lourd!!! Tout d'abord recycler les déchetes actuels")
 				return
@@ -148,6 +151,15 @@ func take_damage(amount: int) -> void:
 		emit_signal("health_changed", health)
 		if health <= 0:
 			die()
+
+func heal(amount: int) -> void:
+	if alive:
+		health += amount
+		if health > max_health:
+			health = max_health
+	PlayerStats.health = health
+	health_changed.emit(health)
+	print("ХП восстановлено! Текущее: ", health)
 
 func die() -> void:
 	alive = false
