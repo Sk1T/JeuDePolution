@@ -377,7 +377,7 @@ animations = [{
 radius = 5.0
 height = 26.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_goyei")
 
 [node name="InteractionArea" type="Area2D" parent="."]
