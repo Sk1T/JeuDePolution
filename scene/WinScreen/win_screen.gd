@@ -17,7 +17,7 @@ func show_my_dialog():
 	)
 
 func _on_main_menu_pressed():
-	get_tree().change_scene_to_file("res://scene/menu.tscn")
+	Transition.change_scene("res://scene/menu.tscn")
 	
 
 

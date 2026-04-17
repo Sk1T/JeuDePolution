@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://cuwklrv06mfxk"]
+[gd_scene load_steps=21 format=4 uid="uid://cuwklrv06mfxk"]
 
 [ext_resource type="Script" path="res://scene/Level/level.gd" id="1_grpty"]
 [ext_resource type="TileSet" uid="uid://ckmmkhdtmq04i" path="res://Ressourses/world.tres" id="1_hkugq"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://5p4v47oal6ha" path="res://scene/Trashe/glass_bottle.tscn" id="9_dvklh"]
 [ext_resource type="PackedScene" uid="uid://djnubjkl0rtex" path="res://scene/pause_menu.tscn" id="11_8556h"]
 [ext_resource type="PackedScene" uid="uid://ck215yqus7gpx" path="res://scene/hospital.tscn" id="14_ljpk7"]
+[ext_resource type="PackedScene" uid="uid://dnqxq08u2etns" path="res://scene/clean_progretion.tscn" id="15_qvbbv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d8v34"]
 texture = ExtResource("2_bfyji")
@@ -1539,3 +1540,7 @@ shape = SubResource("RectangleShape2D_eehn0")
 
 [node name="Hospital" parent="." instance=ExtResource("14_ljpk7")]
 position = Vector2(730, 243)
+
+[node name="CleanProgretion" parent="." instance=ExtResource("15_qvbbv")]
+
+[connection signal="progress_changed" from="Station" to="." method="_on_station_progress_changed"]

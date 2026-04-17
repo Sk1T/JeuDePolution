@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://drwegsntcu5en"]
+[gd_scene load_steps=62 format=3 uid="uid://drwegsntcu5en"]
 
 [ext_resource type="Script" path="res://scene/Player/player.gd" id="1_goyei"]
 [ext_resource type="Texture2D" uid="uid://dscc22jae4ebl" path="res://scene/Player/_side idle.png" id="1_h8sp4"]
@@ -11,7 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://prfm1i371vbn" path="res://scene/Player/death.png" id="9_gi6fv"]
 [ext_resource type="PackedScene" uid="uid://bbot6dssxl78j" path="res://scene/interact_prompt.tscn" id="10_2wnjv"]
 [ext_resource type="AudioStream" uid="uid://45t1ryg0bp4s" path="res://Sounds/DIRT - Run.wav" id="11_g1rnh"]
-[ext_resource type="AudioStream" uid="uid://0mewgce3a6qr" path="res://Sounds/Pick up.wav" id="12_7k1mm"]
+[ext_resource type="AudioStream" uid="uid://dwngc7c1gg8i1" path="res://Sounds/sound of pick up.mp3" id="12_p2roq"]
+[ext_resource type="AudioStream" uid="uid://brs0xmc82hrm8" path="res://Sounds/death_sound.mp3" id="13_ipkkc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uiibm"]
 
@@ -380,9 +381,18 @@ height = 26.0
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_goyei")
 
+[node name="WeightWarning" type="Label" parent="."]
+visible = false
+offset_left = -39.0
+offset_top = -88.0
+offset_right = 53.0
+offset_bottom = -46.0
+theme_override_font_sizes/font_size = 15
+text = "I don't have enough space,I need to recycle "
+autowrap_mode = 2
+
 [node name="InteractionArea" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 8
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 position = Vector2(0, -12)
@@ -413,5 +423,9 @@ volume_db = -10.895
 pitch_scale = 0.96
 
 [node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("12_7k1mm")
+stream = ExtResource("12_p2roq")
 volume_db = 3.748
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-39, -88)
+stream = ExtResource("13_ipkkc")

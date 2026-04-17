@@ -13,6 +13,8 @@ signal died
 @onready var interact_prompt = $InteractPrompt
 @onready var step_snd = $StepSound
 @onready var pickup_snd = $PickupSound
+@onready var weight_warning = $WeightWarning
+@onready var death_sound = $DeathSound
 #variablies
 var current_speed: float = 150.0 # Vitesse maximale de déplacement
 var last_direction = Vector2.DOWN  # Stocke la dernière direction pour l'animation Idle
@@ -22,7 +24,8 @@ var is_picking_up = false # État : vrai si le joueur est en train de ramasser u
 var alive: bool = true
 var max_health: int #max player health
 var health: int #current player health
-
+var is_weight_warning_active: bool = false
+var is_dead: bool = false
 
 
 func _ready() -> void:
@@ -116,7 +119,7 @@ func check_interactions():
 				target.collect()
 				return
 			if current_weight + target.weight > max_weight:
-				print("Trop Lourd!!! Tout d'abord recycler les déchetes actuels")
+				show_weight_warning()
 				return
 				
 			if pickup_snd:
@@ -159,12 +162,30 @@ func heal(amount: int) -> void:
 			health = max_health
 	PlayerStats.health = health
 	health_changed.emit(health)
-	print("ХП восстановлено! Текущее: ", health)
+
 
 func die() -> void:
 	alive = false
 	velocity = Vector2.ZERO
 	interact_prompt.hide()
+	if death_sound:
+		death_sound.pitch_scale = randf_range(0.9, 1.1)
+		death_sound.play()
 	anim.play("Death") #adding death animation
 	await anim.animation_finished
 	died.emit()
+func show_weight_warning():
+	if is_weight_warning_active:
+		return
+	is_weight_warning_active = true
+	weight_warning.visible = true
+	weight_warning.modulate.a = 0.0
+	var tween = create_tween()
+	tween.tween_property(weight_warning, "modulate:a", 1.0, 0.3)
+	tween.tween_interval(1.5)
+	tween.tween_property(weight_warning, "modulate:a", 0.0, 0.5)
+	tween.tween_callback(func():
+		weight_warning.visible = false
+		is_weight_warning_active = false
+	)
+	
