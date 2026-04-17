@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drk7wqe2nd13u"
-path="res://.godot/imported/Zombie-Tileset---_0192_Capa-193.png-e2b13e66d5ad48364f2e7a84c212c065.ctex"
+uid="uid://c16102i2q8yjd"
+path="res://.godot/imported/b17f4b9993fada4.webp-a835c67f34791cbf23824b26d676dc1b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scene/Trashe/Zombie-Tileset---_0192_Capa-193.png"
-dest_files=["res://.godot/imported/Zombie-Tileset---_0192_Capa-193.png-e2b13e66d5ad48364f2e7a84c212c065.ctex"]
+source_file="res://scene/Trashe/b17f4b9993fada4.webp"
+dest_files=["res://.godot/imported/b17f4b9993fada4.webp-a835c67f34791cbf23824b26d676dc1b.ctex"]
 
 [params]
 

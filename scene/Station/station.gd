@@ -1,5 +1,7 @@
 extends Node2D
 
+signal progress_changed(current, goal)
+
 @export var goal_price: int = 100 # Combien faut-il collecter pour gagner 
 var current_total: int = 0      # Quelle quantité a déjà été traitée 
 @onready var recycle_icon = $RecycleSymbol
@@ -69,7 +71,6 @@ func shake_station(duration: float):
 func process_all_garbage(player):
 	if is_processing: return
 	
-	
 	# Si l'inventaire du joueur est vide
 	if player.inventory.size() == 0:
 		show_empty_warning()
@@ -86,13 +87,13 @@ func process_all_garbage(player):
 	# On vide l'inventaire et on ajoute les points au score total
 	for item in player.inventory:
 		current_total += item["price"]
+		progress_changed.emit(current_total, goal_price)
 	
 	player.inventory.clear() # Vider l'inventaire du joueur
 	player.current_weight = 0.0
 	player.update_speed()
 	if player.ui_node:
 		player.ui_node.update_weight(0.0, player.max_weight)
-	print("Progrès global : ", current_total, " / ", goal_price)
 	
 	check_win_condition()
 
@@ -101,8 +102,8 @@ func check_win_condition(): # Vérifie si le score atteint l'objectif
 		win_game()
 
 func win_game():
-	print("VICTOIRE ! La planète est propre !")
 	# Ici, vous pouvez changer de scène :
-	get_tree().change_scene_to_file( "res://scene/WinScreen/win_screen.tscn")
+	MusicPlayer.stop_music()
+	Transition.change_scene( "res://scene/WinScreen/win_screen.tscn")
 	# Ou mettez simplement le jeu en pause :
 	# get_tree().paused = true

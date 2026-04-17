@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnqxq08u2etns"]
+
+[ext_resource type="Texture2D" uid="uid://bci8u4h6syfgx" path="res://Assets/04.png" id="1_jg0th"]
+[ext_resource type="Script" path="res://scene/clean_progretion.gd" id="1_l3m8g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gw037"]
+atlas = ExtResource("1_jg0th")
+region = Rect2(296.774, 148.92, 32.396, 5.261)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ex03j"]
+atlas = ExtResource("1_jg0th")
+region = Rect2(57.1691, 165.001, 31.8264, 5.10046)
+
+[node name="CleanProgretion" type="CanvasLayer"]
+script = ExtResource("1_l3m8g")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -346.0
+offset_top = -24.0
+offset_right = -312.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(21.33, 5)
+texture_under = SubResource("AtlasTexture_gw037")
+texture_progress = SubResource("AtlasTexture_ex03j")

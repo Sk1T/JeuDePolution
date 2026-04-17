@@ -4,6 +4,7 @@ var rules_scene = preload("res://scene/pop_up_window.tscn")
 var level: int = 1
 
 func _ready():
+	MusicPlayer.play_music("res://Sounds/Background_music.mp3")
 	show_rules()
 	_setup_level(self)
 func show_rules():
@@ -32,3 +33,7 @@ func _change_level() -> void:
 		get_tree().change_scene_to_file(path)
 	else:
 		get_tree().change_scene_to_file("res://scene/menu.tscn")
+
+
+func _on_station_progress_changed(current, goal):
+	$CleanProgretion.update_progress(current,goal)

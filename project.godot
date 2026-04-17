@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 PlayerStats="*res://player_stats.gd"
 SoundManager="*res://scene/sound_manager.tscn"
+MusicPlayer="*res://scene/music_player.tscn"
+Transition="*res://scene/transition.tscn"
 
 [display]
 
