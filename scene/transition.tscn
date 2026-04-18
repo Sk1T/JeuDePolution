@@ -2,8 +2,7 @@
 
 [ext_resource type="Script" path="res://transition.gd" id="1_p35kg"]
 
-[sub_resource type="Animation" id="Animation_qjoh1"]
-resource_name = "fade"
+[sub_resource type="Animation" id="Animation_i2n7t"]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -18,7 +17,8 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_i2n7t"]
+[sub_resource type="Animation" id="Animation_qjoh1"]
+resource_name = "fade"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
