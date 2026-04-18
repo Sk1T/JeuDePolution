@@ -71,29 +71,38 @@ func shake_station(duration: float):
 func process_all_garbage(player):
 	if is_processing: return
 	
-	# Si l'inventaire du joueur est vide
 	if player.inventory.size() == 0:
 		show_empty_warning()
 		return
+		
 	is_processing = true
+
+	var earned_points = 0
+	for item in player.inventory:
+		earned_points += item["price"]
+	
+	player.inventory.clear() 
+	player.current_weight = 0.0
+	player.update_speed()
+	
+	if player.ui_node:
+		player.ui_node.update_weight(0.0, player.max_weight)
+	
 	if recycle_sound:
 		recycle_sound.pitch_scale = randf_range(0.9, 1.1)
 		recycle_sound.play()
+	
 	shake_station(3.0)
+	
 	await get_tree().create_timer(3.0).timeout
+	
 	if recycle_sound:
 		recycle_sound.stop()
-	is_processing = false
-	# On vide l'inventaire et on ajoute les points au score total
-	for item in player.inventory:
-		current_total += item["price"]
-		progress_changed.emit(current_total, goal_price)
+		
+	current_total += earned_points
+	progress_changed.emit(current_total, goal_price)
 	
-	player.inventory.clear() # Vider l'inventaire du joueur
-	player.current_weight = 0.0
-	player.update_speed()
-	if player.ui_node:
-		player.ui_node.update_weight(0.0, player.max_weight)
+	is_processing = false
 	
 	check_win_condition()
 
