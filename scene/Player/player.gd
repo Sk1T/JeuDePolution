@@ -26,6 +26,7 @@ var max_health: int #max player health
 var health: int #current player health
 var is_weight_warning_active: bool = false
 var is_dead: bool = false
+var lose_screen = preload("res://scene/DeathScreen/death_screen.tscn")
 
 
 func _ready() -> void:
@@ -174,6 +175,8 @@ func die() -> void:
 	anim.play("Death") #adding death animation
 	await anim.animation_finished
 	died.emit()
+	MusicPlayer.stop_music()
+	Transition.change_scene( "res://scene/DeathScreen/death_screen.tscn")
 func show_weight_warning():
 	if is_weight_warning_active:
 		return
@@ -188,4 +191,3 @@ func show_weight_warning():
 		weight_warning.visible = false
 		is_weight_warning_active = false
 	)
-	
