@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://vqc2awts41qy"]
+
+[ext_resource type="Script" path="res://pit.gd" id="1_envy8"]
+[ext_resource type="Texture2D" uid="uid://b8jbcratgmb83" path="res://Assets/Pits/pit1.png" id="2_vonpl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rfpsn"]
+radius = 13.9396
+height = 54.0897
+
+[node name="Pit" type="Area2D"]
+script = ExtResource("1_envy8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = ExtResource("2_vonpl")
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 1)
+rotation = -1.59834
+shape = SubResource("CapsuleShape2D_rfpsn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
