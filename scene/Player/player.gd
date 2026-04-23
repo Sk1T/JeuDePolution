@@ -177,6 +177,23 @@ func die() -> void:
 	died.emit()
 	MusicPlayer.stop_music()
 	Transition.change_scene( "res://scene/DeathScreen/death_screen.tscn")
+func fall() -> void:
+	if not alive: return
+	alive= false
+	velocity = Vector2.ZERO
+	if death_sound:
+		death_sound.pitch_scale = randf_range(0.9, 1.1)
+		death_sound.play()
+	if last_direction.y < 0:
+		anim.play("Fall_Up")
+	elif last_direction.y > 0:
+		anim.play("Fall_Down")
+	else:
+		anim.play("Fall_Side")
+	await anim.animation_finished
+	died.emit()
+	MusicPlayer.stop_music()
+	Transition.change_scene( "res://scene/DeathScreen/death_screen.tscn")
 func show_weight_warning():
 	if is_weight_warning_active:
 		return
