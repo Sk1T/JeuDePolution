@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var item_name: String = "tire" # Nom de l'objet
-@export var price: int = 40 #valeur conditionnelle des déshetes
+@export var price: int = 30 #valeur conditionnelle des déshetes
 @export var weight: float = 5.5
 var hover_tween: Tween
 

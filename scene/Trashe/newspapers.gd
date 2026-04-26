@@ -2,7 +2,7 @@ extends Node2D
 
 @export var item_name: String = "Newspapares" # Nom de l'objet
 @export var price: int = 10 #valeur conditionnelle des déshetes
-@export var weight: float = 2
+@export var weight: float = 3
 var hover_tween: Tween
 
 #func _ready():

@@ -13130,6 +13130,10 @@ position = Vector2(884, 308)
 z_index = 1
 position = Vector2(190, 165)
 
+[node name="Tire2" parent="." instance=ExtResource("6_rqlok")]
+z_index = 1
+position = Vector2(685, 300)
+
 [node name="Newspapers" parent="." instance=ExtResource("7_wfrxm")]
 position = Vector2(164, 164)
 
