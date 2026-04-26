@@ -183,7 +183,7 @@ func fall() -> void:
 	velocity = Vector2.ZERO
 	if death_sound:
 		death_sound.pitch_scale = randf_range(0.9, 1.1)
-		death_sound.play()
+		death_sound.play()	
 	if last_direction.y < 0:
 		anim.play("Fall_Up")
 	elif last_direction.y > 0:

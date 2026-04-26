@@ -552,7 +552,7 @@ shape = SubResource("CircleShape2D_uiibm")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_5vnyg")
-animation = &"Fall_Side"
+animation = &"Idle"
 autoplay = "Idle"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
