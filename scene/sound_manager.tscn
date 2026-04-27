@@ -1,16 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://g1eo2vjs0k3h"]
+[gd_scene format=3 uid="uid://g1eo2vjs0k3h"]
 
-[ext_resource type="Script" path="res://sound_manager.gd" id="1_m2qbt"]
+[ext_resource type="Script" uid="uid://bcojwgu4utta3" path="res://sound_manager.gd" id="1_m2qbt"]
 [ext_resource type="AudioStream" uid="uid://c2wrscvu1n7fv" path="res://Sounds/hover.wav" id="2_ja717"]
 [ext_resource type="AudioStream" uid="uid://c7jfm33rw2e85" path="res://Sounds/click.wav" id="3_4xndv"]
 
-[node name="SoundManager" type="Node2D"]
+[node name="SoundManager" type="Node2D" unique_id=1229622126]
 script = ExtResource("1_m2qbt")
 
-[node name="HoverSound" type="AudioStreamPlayer2D" parent="."]
+[node name="HoverSound" type="AudioStreamPlayer2D" parent="." unique_id=1130609151]
 stream = ExtResource("2_ja717")
 volume_db = 5.622
+bus = &"SFX"
 
-[node name="ClickSound" type="AudioStreamPlayer2D" parent="."]
+[node name="ClickSound" type="AudioStreamPlayer2D" parent="." unique_id=186488398]
 stream = ExtResource("3_4xndv")
 volume_db = 2.811
+bus = &"SFX"

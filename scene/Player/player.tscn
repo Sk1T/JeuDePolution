@@ -1,6 +1,6 @@
-[gd_scene load_steps=62 format=3 uid="uid://drwegsntcu5en"]
+[gd_scene format=3 uid="uid://drwegsntcu5en"]
 
-[ext_resource type="Script" path="res://scene/Player/player.gd" id="1_goyei"]
+[ext_resource type="Script" uid="uid://bkvjcglasbctx" path="res://scene/Player/player.gd" id="1_goyei"]
 [ext_resource type="Texture2D" uid="uid://dscc22jae4ebl" path="res://scene/Player/_side idle.png" id="1_h8sp4"]
 [ext_resource type="Texture2D" uid="uid://igdu6u0p408g" path="res://scene/Player/_down idle.png" id="2_hh3le"]
 [ext_resource type="Texture2D" uid="uid://gxjf7ga3glyd" path="res://scene/Player/_pick up.png" id="2_mneq2"]
@@ -378,10 +378,10 @@ animations = [{
 radius = 5.0
 height = 26.0
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1755494105 groups=["player"]]
 script = ExtResource("1_goyei")
 
-[node name="WeightWarning" type="Label" parent="."]
+[node name="WeightWarning" type="Label" parent="." unique_id=1899128191]
 visible = false
 offset_left = -39.0
 offset_top = -88.0
@@ -391,41 +391,44 @@ theme_override_font_sizes/font_size = 15
 text = "I don't have enough space,I need to recycle "
 autowrap_mode = 2
 
-[node name="InteractionArea" type="Area2D" parent="."]
+[node name="InteractionArea" type="Area2D" parent="." unique_id=1853897906]
 collision_mask = 9
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=14319150]
 position = Vector2(0, -12)
 shape = SubResource("CircleShape2D_uiibm")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1879065825]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_5vnyg")
 animation = &"Death"
 autoplay = "Idle"
 
-[node name="Hitbox" type="CollisionShape2D" parent="."]
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=665966705]
 position = Vector2(0, -13)
 shape = SubResource("CapsuleShape2D_k232c")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1188143594]
 limit_left = 0
 limit_top = 0
 limit_right = 1120
 limit_bottom = 640
 
-[node name="InteractPrompt" parent="." instance=ExtResource("10_2wnjv")]
+[node name="InteractPrompt" parent="." unique_id=1629732506 instance=ExtResource("10_2wnjv")]
 position = Vector2(-4, -35)
 
-[node name="StepSound" type="AudioStreamPlayer2D" parent="."]
+[node name="StepSound" type="AudioStreamPlayer2D" parent="." unique_id=1031586662]
 stream = ExtResource("11_g1rnh")
 volume_db = -10.895
 pitch_scale = 0.96
+bus = &"SFX"
 
-[node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
+[node name="PickupSound" type="AudioStreamPlayer2D" parent="." unique_id=1917443439]
 stream = ExtResource("12_p2roq")
 volume_db = 3.748
+bus = &"SFX"
 
-[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=62920209]
 position = Vector2(-39, -88)
 stream = ExtResource("13_ipkkc")
+bus = &"SFX"

@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ck215yqus7gpx"]
+[gd_scene format=3 uid="uid://ck215yqus7gpx"]
 
 [ext_resource type="Texture2D" uid="uid://dturt0if58ghs" path="res://Assets/pixel-art-hospital-building-304-png.webp" id="1_43lft"]
-[ext_resource type="Script" path="res://scene/hospital.gd" id="1_mkwmf"]
+[ext_resource type="Script" uid="uid://rwaaycdxwqs2" path="res://scene/hospital.gd" id="1_mkwmf"]
 [ext_resource type="AudioStream" uid="uid://bs3m8anlla4sj" path="res://Sounds/Heal.wav" id="3_jwb3b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tic4y"]
@@ -10,32 +10,33 @@ size = Vector2(99, 40)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o3rqq"]
 size = Vector2(111, 28)
 
-[node name="Hospital" type="Node2D"]
+[node name="Hospital" type="Node2D" unique_id=1057659083]
 script = ExtResource("1_mkwmf")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2086602617]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=491938237]
 position = Vector2(-13.5, -26)
 shape = SubResource("RectangleShape2D_tic4y")
 
-[node name="HospitalArea" type="Area2D" parent="."]
+[node name="HospitalArea" type="Area2D" parent="." unique_id=1086655270]
 collision_layer = 8
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HospitalArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HospitalArea" unique_id=1725133558]
 position = Vector2(-16.5, 12)
 shape = SubResource("RectangleShape2D_o3rqq")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=946645886]
 position = Vector2(-15, -45)
 scale = Vector2(0.216607, 0.182857)
 texture = ExtResource("1_43lft")
 
-[node name="HealSound" type="AudioStreamPlayer2D" parent="."]
+[node name="HealSound" type="AudioStreamPlayer2D" parent="." unique_id=868780178]
 stream = ExtResource("3_jwb3b")
+bus = &"SFX"
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1735569723]
 offset_left = -63.0
 offset_top = -97.0
 offset_right = 37.0

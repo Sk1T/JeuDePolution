@@ -1,126 +1,221 @@
-# Documentation utilisateur — JeuDePolution
+# USER GUIDE — JeuDePolution / Nature’s Last Stand
 
 ## 1. Présentation du jeu
+JeuDePolution / Nature’s Last Stand est un jeu 2D vu de dessus dans lequel le joueur doit nettoyer un environnement pollué.
 
-**JeuDePolution** est un jeu 2D développé avec Godot dans le cadre du projet en autonomie de Licence Informatique à l’Université Lyon 2.
+Le principe général du jeu repose sur :
+- l’exploration ;
+- la collecte de déchets ;
+- la gestion du poids transporté ;
+- le recyclage ;
+- la survie dans des zones dangereuses.
 
-Le joueur incarne un personnage chargé de nettoyer une zone polluée. L’objectif est de ramasser les déchets présents sur la carte, de les rapporter à la station de recyclage, puis de remplir progressivement la barre de nettoyage du monde.
-
-Le thème du jeu est lié au dérèglement climatique et à la sensibilisation environnementale : le joueur comprend que la pollution a un impact direct sur l’environnement et que le recyclage permet d’améliorer l’état du monde.
-
----
-
-## 2. Objectif du jeu
-
-L’objectif principal est de nettoyer entièrement la zone.
-
-Pour gagner, le joueur doit :
-
-1. Se déplacer dans le niveau.
-2. Ramasser les déchets.
-3. Faire attention à la limite de poids transportable.
-4. Aller à la station de recyclage.
-5. Recycler les déchets collectés.
-6. Remplir la barre de progression globale.
-7. Éviter les zones dangereuses de pollution.
-
-Lorsque l’objectif de nettoyage est atteint, une scène de victoire apparaît.
+**Statut : Existant**
 
 ---
 
-## 3. Commandes
+## 2. Objectif principal
+L’objectif du joueur est de ramasser les déchets présents dans le niveau puis de les recycler afin d’augmenter la progression globale du nettoyage.
 
-| Action | Touche / Interaction |
-|---|---|
-| Se déplacer vers le haut | W / Flèche haut |
-| Se déplacer vers le bas | S / Flèche bas |
-| Se déplacer à gauche | A / Flèche gauche |
-| Se déplacer à droite | D / Flèche droite |
-| Interagir / ramasser / recycler | E |
-| Menu pause | Échap |
-| Boutons de menu | Souris |
+Pour réussir, il faut :
+- collecter les déchets ;
+- éviter de trop se surcharger ;
+- retourner à la station de recyclage au bon moment ;
+- survivre aux zones polluées.
 
----
-
-## 4. Interface utilisateur
-
-L’interface affiche plusieurs informations importantes :
-
-- **La vie du joueur**, représentée par des cœurs.
-- **Le poids transporté**, qui augmente lorsque le joueur ramasse des déchets.
-- **La progression globale du nettoyage**, qui montre l’avancement vers la victoire.
-- **Des messages contextuels**, par exemple lorsque l’inventaire est plein ou lorsqu’un objet peut être récupéré.
+**Statut : Existant**
 
 ---
 
-## 5. Système de poids
+## 3. Commandes principales
+### Déplacement
+Le personnage se déplace avec le clavier.
 
-Chaque déchet possède un poids.
+### Interaction
+La touche **E** permet d’interagir avec les objets et les stations.
 
-Lorsque le joueur ramasse des déchets, son poids transporté augmente. Plus le poids est élevé, plus le joueur devient lent. Cela oblige le joueur à faire des choix et à retourner régulièrement à la station de recyclage.
+### Pause
+La touche **Esc** ouvre le menu pause.
 
-Si le poids maximal est atteint, le joueur doit recycler ses déchets avant de pouvoir en ramasser d’autres.
-
----
-
-## 6. Recyclage
-
-La station de recyclage permet de vider l’inventaire du joueur.
-
-Lorsque le joueur interagit avec la station :
-
-- Les déchets collectés sont traités.
-- Le poids transporté revient à zéro.
-- La vitesse du joueur est restaurée.
-- La progression globale augmente.
-- La barre de nettoyage se met à jour.
+**Statut : Existant**
 
 ---
 
-## 7. Danger et défaite
+## 4. Menu principal
+Le menu principal permet de :
+- lancer la partie avec **Play** ;
+- ouvrir le panneau **Instructions** ;
+- quitter le jeu avec **Quit**.
 
-Certaines zones polluées sont dangereuses.
+Le panneau d’instructions permet au joueur de mieux comprendre le jeu avant de commencer.
 
-Si le joueur reste dans une zone de pollution, il perd progressivement de la vie. Lorsque sa vie atteint zéro, une animation de mort se lance et une scène de défaite apparaît.
-
-Le joueur doit donc nettoyer la zone tout en évitant de rester trop longtemps dans les zones dangereuses.
-
----
-
-## 8. Conditions de fin
-
-Le jeu possède deux fins principales :
-
-### Victoire
-
-Le joueur gagne lorsque la progression globale du nettoyage atteint l’objectif fixé.
-
-### Défaite
-
-Le joueur perd lorsque sa vie atteint zéro.
+**Statut : Modifié **
 
 ---
 
-## 9. Conseils pour jouer
+## 5. Instructions
+Le panneau **Instructions** a été ajouté / stabilisé pour permettre au joueur de consulter rapidement :
+- le but du jeu ;
+- les commandes principales ;
+- la logique de collecte et de recyclage.
 
-- Commencer par ramasser les déchets les plus proches.
-- Retourner souvent à la station de recyclage.
-- Éviter de rester dans les zones polluées.
-- Surveiller la barre de poids.
-- Utiliser la progression globale pour savoir combien il reste à nettoyer.
+Le bouton **Back** permet de revenir au menu principal.
+
+**Statut : Modifié **
 
 ---
 
-## 10. Limites observées et améliorations possibles
+## 6. Gameplay principal
+La boucle de jeu principale est la suivante :
 
-L’audit QA a identifié plusieurs améliorations possibles :
+1. explorer la zone ;
+2. ramasser des déchets ;
+3. transporter les déchets ;
+4. surveiller le poids ;
+5. aller à la station ;
+6. recycler ;
+7. augmenter la progression du nettoyage.
 
-- Ajouter un menu d’instructions plus clair.
-- Rendre la barre de nettoyage plus intuitive.
-- Ajouter davantage de feedback visuel pendant le recyclage.
-- Clarifier les zones de danger.
-- Ajouter un bouton Restart.
-- Ajouter un choix de difficulté.
-- Ajouter plus de messages en cours de partie.
+**Statut : Existant**
 
-Ces points servent de base pour les prochaines améliorations du projet.
+---
+
+## 7. Système de poids
+Chaque déchet ramassé ajoute du poids au personnage.
+
+Quand le poids augmente :
+- le personnage devient plus lent ;
+- le joueur doit mieux gérer ses déplacements ;
+- il devient plus risqué de rester trop longtemps loin de la station.
+
+Ce système oblige le joueur à faire des choix et rend la collecte plus stratégique.
+
+**Statut : Existant**
+
+---
+
+## 8. Recyclage
+Le recyclage est une étape essentielle du jeu.
+
+Quand le joueur atteint la station de recyclage :
+- les déchets sont retirés de l’inventaire ;
+- la progression globale augmente ;
+- le joueur peut repartir collecter d’autres déchets.
+
+**Statut : Existant**
+
+---
+
+## 9. Santé et danger
+Le joueur possède une barre / un système de santé visible à l’écran.
+
+Certaines zones polluées infligent des dégâts.  
+Si la santé atteint zéro, le joueur perd la partie et l’écran de défaite apparaît.
+
+**Statut : Existant**
+
+---
+
+## 10. Menu pause
+Pendant la partie, le joueur peut ouvrir le menu pause avec **Esc**.
+
+Le menu pause contient maintenant :
+- **Continue**
+- **Settings**
+- **Main Menu**
+- **Quit**
+
+Cela permet de mieux contrôler la navigation pendant la partie.
+
+**Statut : Modifié **
+
+---
+
+## 11. Settings audio
+Le panneau **Settings** du menu pause contient :
+- un slider **Music** ;
+- un slider **SFX** ;
+- un bouton **Mute / Unmute** ;
+- un bouton **Back**.
+
+Le joueur peut donc :
+- baisser ou augmenter la musique ;
+- baisser ou augmenter les effets sonores ;
+- couper puis restaurer rapidement le son.
+
+Ces réglages sont maintenant reliés à de vrais bus audio séparés.
+
+**Statut : Créé / amélioré a l'audit**
+
+---
+
+## 12. Écran de défaite
+Lorsque le joueur meurt, l’écran de défaite apparaît.
+
+Il contient :
+- **Return to menu**
+- **Quit**
+- **Replay**
+
+Le bouton **Replay** permet de relancer rapidement une partie.
+
+**Statut : Modifié **
+
+---
+
+## 13. Écran de victoire
+Lorsque la progression de nettoyage est terminée, l’écran de victoire apparaît.
+
+Il contient :
+- **Return to menu**
+- **Quit**
+- **Replay**
+
+Le bouton **Replay** permet également de relancer rapidement une partie après la victoire.
+
+**Statut : Modifié **
+
+---
+
+## 14. Parcours conseillé pour tester le jeu
+Pour tester rapidement les fonctionnalités principales :
+
+1. ouvrir le jeu ;
+2. consulter le menu principal ;
+3. ouvrir **Instructions** ;
+4. revenir au menu avec **Back** ;
+5. lancer la partie avec **Play** ;
+6. se déplacer ;
+7. ramasser des déchets ;
+8. recycler ;
+9. ouvrir le menu pause avec **Esc** ;
+10. tester **Settings** ;
+11. modifier **Music** et **SFX** ;
+12. tester **Mute / Unmute** ;
+13. revenir avec **Back** ;
+14. continuer la partie ;
+15. tester un écran de fin ;
+16. utiliser **Replay**.
+
+**Statut : Créé a l'audit**
+
+---
+
+## 15. Limites actuelles
+Le jeu est maintenant plus lisible et plus agréable à utiliser, mais certaines améliorations restent possibles :
+- plus de feedback visuel en jeu ;
+- plus de messages contextuels ;
+- une interface encore plus homogène ;
+- une sauvegarde persistante des paramètres audio.
+
+**Statut : Modifié**
+
+---
+
+## 16. Légende
+- **Existant** : élément déjà présent dans le projet collectif initial.
+- **Modifié ** : élément existant retravaillé, corrigé ou amélioré par Pablo Alvarez.
+- **Créé / amélioré a l'audit ** : élément ajouté ou fortement développé pendant l’audit QA et les améliorations personnelles par Pablo Alvarez.
+
+Le développement initial du projet, de ses bases de gameplay et de sa structure principale provient du groupe de développeurs d’origine.  
+Les éléments marqués comme modifiés, créés ou améliorés correspondent à l’intervention personnelle de **Pablo Alvarez** dans le cadre de la branche QA et du travail d’amélioration du projet.

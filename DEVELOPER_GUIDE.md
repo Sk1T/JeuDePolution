@@ -176,7 +176,7 @@ Le joueur gagne lorsque la progression de nettoyage atteint l’objectif défini
 Exemple :
 ```gdscript
 if current_total >= goal_price:
-    win_game()
+	win_game()
 
 ### Défaite
 
@@ -186,7 +186,7 @@ Exemple :
 
 ```gdscript
 if health <= 0:
-    die()
+	die()
 
 ---
 
@@ -227,3 +227,156 @@ Voir l’état du projet :
 
 ```bash
 git status
+
+## 11. Menu principal et instructions
+
+Le menu principal du projet a été enrichi et stabilisé.
+
+## Éléments disponibles
+- `Play`
+- `Instructions`
+- `Quit`
+
+## Logique actuelle
+Le script du menu principal gère :
+- le lancement du niveau principal ;
+- l’ouverture du panneau d’instructions ;
+- le retour au menu via le bouton `Back` ;
+- la sortie du jeu.
+
+## Intérêt technique
+Cette amélioration permet :
+- une meilleure entrée utilisateur dans le jeu ;
+- une structure de navigation plus propre ;
+- une meilleure lisibilité pour une démonstration ou une soutenance.
+
+Scripts/scènes concernés :
+- `scene/menu.tscn`
+- `scene/Menu/menu.gd`
+
+---
+
+## 12. Menu pause
+
+Un menu pause plus complet a été mis en place pendant l’audit.
+
+## Structure actuelle
+Le menu pause contient :
+- `Continue`
+- `Settings`
+- `Main Menu`
+- `Quit`
+
+## Fichier principal
+- `scene/pause_menu.tscn`
+- `pause_menu.gd`
+
+## Logique technique
+Le menu pause s’ouvre avec `Esc` et permet :
+- de reprendre la partie ;
+- d’ouvrir les paramètres ;
+- de revenir au menu principal ;
+- de quitter le jeu.
+
+## Point technique important
+Une correction a été nécessaire sur les chemins de nœuds, notamment entre :
+- `$VBoxContainer`
+- et `$Background/VBoxContainer`
+
+Sans ce correctif, certaines actions provoquaient des erreurs de type `null instance`.
+
+---
+
+## 13. Paramètres audio
+
+Le projet possède maintenant un panneau `Settings` fonctionnel dans le menu pause.
+
+### Contenu du panneau
+- `MusicSlider`
+- `SFXSlider`
+- `MuteButton`
+- `BackSettings`
+
+## Fonctionnement
+- `MusicSlider` modifie le volume du bus `Music`
+- `SFXSlider` modifie le volume du bus `SFX`
+- `MuteButton` coupe les deux catégories de son
+- `Unmute` restaure les valeurs précédentes
+- `BackSettings` retourne au menu pause
+
+## Architecture audio ajoutée
+Des bus audio séparés ont été créés :
+- `Master`
+- `Music`
+- `SFX`
+
+Les lecteurs audio ont ensuite été répartis correctement entre :
+- musiques de menu / victoire / défaite → `Music`
+- effets sonores et interactions → `SFX`
+
+## Intérêt technique
+Cette séparation rend enfin possibles de vrais paramètres utilisateur.
+
+---
+
+## 14. Écrans de fin et replay
+
+Les écrans de défaite et de victoire ont été améliorés.
+
+## Death screen
+Fichiers concernés :
+- `scene/DeathScreen/death_screen.tscn`
+- `scene/DeathScreen/death_screen.gd`
+
+Amélioration ajoutée :
+- bouton `Replay`
+
+## Win screen
+Fichiers concernés :
+- `scene/WinScreen/win_screen.tscn`
+- `scene/WinScreen/win_screen.gd`
+
+Amélioration ajoutée :
+- bouton `Replay`
+
+## Intérêt
+Le replay permet :
+- de tester plus rapidement ;
+- d’améliorer l’expérience utilisateur ;
+- de rendre le projet plus fluide en démonstration.
+
+---
+
+## 15. Signaux et points de vigilance
+
+Pendant l’audit, plusieurs erreurs ont montré l’importance des signaux dans Godot.
+
+### Points à surveiller
+- bouton présent dans la scène mais signal non connecté ;
+- bouton renommé sans mise à jour de la logique ;
+- confusion entre plusieurs scènes de menu ;
+- script attaché au mauvais type de nœud (`Node2D` / `CanvasLayer`) ;
+- connexions en double ou oubliées.
+
+## Exemple concret
+Le bouton `Back` des instructions ne fonctionnait pas car son signal n’était pas connecté.
+Le problème ne venait pas du code métier, mais de la scène et de la connexion du signal.
+
+## Recommandation
+Toujours vérifier :
+- le nom réel du nœud ;
+- le script attaché ;
+- le type du nœud ;
+- les connexions de signaux dans la scène.
+
+---
+
+## 16. Recommandations pour la suite
+
+Les améliorations les plus utiles à poursuivre seraient :
+- sauvegarde persistante des paramètres audio ;
+- ajout d’un bouton `Restart` dans le menu pause ;
+- plus de feedbacks UI pendant la partie ;
+- meilleure lisibilité de la progression de nettoyage ;
+- harmonisation visuelle supplémentaire ;
+- comparaison finale entre la branche QA et la branche principale avant intégration.

@@ -1,36 +1,46 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4wkkp3tfk5td"]
+[gd_scene format=3 uid="uid://b4wkkp3tfk5td"]
 
-[ext_resource type="Script" path="res://scene/DeathScreen/death_screen.gd" id="1_dxdio"]
+[ext_resource type="Script" uid="uid://b2a15vdke118g" path="res://scene/DeathScreen/death_screen.gd" id="1_dxdio"]
 [ext_resource type="AudioStream" uid="uid://bvrwr5bmpmrpj" path="res://Sounds/death_sceen_music.mp3" id="2_66jqk"]
 [ext_resource type="PackedScene" uid="uid://bpya3bwmp4deu" path="res://scene/DeathScreen/bg_death_screen.tscn" id="3_cyofm"]
 
-[node name="DeathScreen" type="Node2D"]
+[node name="DeathScreen" type="Node2D" unique_id=557812705]
 script = ExtResource("1_dxdio")
 
-[node name="main menu" type="Button" parent="."]
+[node name="main menu" type="Button" parent="." unique_id=1501687263]
 offset_left = 184.0
-offset_top = 62.0
+offset_top = 23.0
 offset_right = 440.0
-offset_bottom = 153.0
+offset_bottom = 114.0
 theme_override_font_sizes/font_size = 44
 text = "Return to menu
 "
 
-[node name="Quit" type="Button" parent="."]
+[node name="Quit" type="Button" parent="." unique_id=898590861]
 offset_left = 184.0
-offset_top = 193.0
+offset_top = 227.0
 offset_right = 447.0
-offset_bottom = 293.0
+offset_bottom = 327.0
 theme_override_font_sizes/font_size = 60
 text = "Quit"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1309136003]
 process_mode = 3
 stream = ExtResource("2_66jqk")
 volume_db = -15.928
 autoplay = true
+bus = &"Music"
 
-[node name="ParallaxBackground" parent="." instance=ExtResource("3_cyofm")]
+[node name="ParallaxBackground" parent="." unique_id=1885572398 instance=ExtResource("3_cyofm")]
+
+[node name="ReplayButton" type="Button" parent="." unique_id=2083546398]
+offset_left = 183.0
+offset_top = 129.0
+offset_right = 441.0
+offset_bottom = 214.0
+theme_override_font_sizes/font_size = 44
+text = "Replay"
 
 [connection signal="pressed" from="main menu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="ReplayButton" to="." method="_on_replay_button_pressed"]
